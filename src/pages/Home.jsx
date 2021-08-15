@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
+// import AddCategory from "../components/AddCategory";
 import Card from "../components/Card";
-
+import addIcon from "../images/add_icon_circle.png";
 import "../styles/Home.scss";
 
 function Home({ headerBg }) {
   const [categories, setCategories] = useState([]);
 
-  console.log(headerBg);
-
   const getCategories = async () => {
-    try {
-      const response = await fetch("http://api.programator.sk/gallery");
-      const data = await response.json();
-      setCategories(data.galleries);
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   const response = await fetch("http://api.programator.sk/gallery");
+    //   const data = await response.json();
+    //   setCategories(data.galleries);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    fetch("http://api.programator.sk/gallery")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCategories(data.galleries);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -31,6 +40,12 @@ function Home({ headerBg }) {
           <Card key={path} name={name} image={image} headerBg={headerBg} />
         );
       })}
+      <div className="addCategory">
+        <img src={addIcon} alt="" />
+        <p>Pridať kategóriu</p>
+      </div>
+
+      {/* <AddCategory /> */}
     </div>
   );
 }

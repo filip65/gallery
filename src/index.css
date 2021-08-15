@@ -8,3 +8,15 @@ body {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
 }
+
+/* :root,
+html,
+.App,
+body {
+  width: 100vw;
+  overflow-x: hidden;
+} */
+
+#root {
+  overflow: hidden;
+}

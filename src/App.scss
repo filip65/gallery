@@ -1,8 +1,11 @@
 @import "./styles/colors";
 
 .App {
+  width: 100vw;
   background-color: $background;
   z-index: 1;
+  overflow-x: hidden;
+  position: relative;
 }
 
 .wrapper {
@@ -62,15 +65,15 @@
   font-weight: 400;
   border-bottom: 2px solid rgba(255, 255, 255, 0.315);
   padding-bottom: 15px;
-  margin-bottom: 2rem;
 }
 
 .list {
+  width: 100%;
   display: grid;
   grid-gap: 30px;
   grid-template-columns: 1fr;
 
-  @media (min-width: 768px) {
+  @media (min-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
