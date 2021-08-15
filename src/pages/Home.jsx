@@ -3,22 +3,12 @@ import Card from "../components/Card";
 import addIcon from "../images/add_icon_circle.png";
 import "../styles/Home.scss";
 
-function Home({ headerBg, setIsAddGalleryModalOpen }) {
-  const [categories, setCategories] = useState([]);
-
-  const getCategories = async () => {
-    fetch("http://api.programator.sk/gallery")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setCategories(data.galleries);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
+function Home({
+  categories,
+  getCategories,
+  headerBg,
+  setIsAddGalleryModalOpen,
+}) {
   useEffect(() => {
     getCategories();
   }, []);

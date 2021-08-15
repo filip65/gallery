@@ -11,7 +11,7 @@ const schema = yup.object().shape({
   name: yup.string().required("Meno nesmie byť prázdne!"),
 });
 
-function AddGalleryModal({ setIsAddGalleryModalOpen }) {
+function AddGalleryModal({ setIsAddGalleryModalOpen, getCategories }) {
   const {
     register,
     handleSubmit,
@@ -42,6 +42,8 @@ function AddGalleryModal({ setIsAddGalleryModalOpen }) {
     }).then((res) => {
       if (res.ok) {
         closeModal();
+        getCategories();
+        // window.location.reload();
       } else if (res.status === 409) {
         setError("name", {
           type: "manual",

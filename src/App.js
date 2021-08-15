@@ -10,8 +10,22 @@ import Modal from "./components/Modal";
 function App() {
   const location = useLocation();
   const headerBg = useRef(null);
-
   const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
+
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    fetch("http://api.programator.sk/gallery")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCategories(data.galleries);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const getText = (location) => {
     switch (location.pathname) {
@@ -34,6 +48,8 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <Home
+              categories={categories}
+              getCategories={getCategories}
               headerBg={headerBg}
               setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
             />
@@ -44,14 +60,11 @@ function App() {
         </Switch>
       </div>
 
-      {/* {isAddGalleryModalOpen && (
-        <AddGalleryModal setIsAddGalleryModalOpen={setIsAddGalleryModalOpen} />
-      )} */}
-
       {isAddGalleryModalOpen && (
         <Modal setIsOpen={setIsAddGalleryModalOpen}>
           <AddGalleryModal
             setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
+            getCategories={getCategories}
           />
         </Modal>
       )}
