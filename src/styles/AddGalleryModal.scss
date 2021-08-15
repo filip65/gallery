@@ -1,0 +1,62 @@
+@import "./colors";
+
+.addGalleryModal {
+  h3 {
+    color: $darkText;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid $border;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 765px) {
+      flex-direction: row;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      margin-bottom: 1rem;
+      color: $darkText;
+      text-transform: uppercase;
+      font-size: 1rem;
+      outline: none;
+      color: $darkText;
+
+      @media (min-width: 765px) {
+        margin-bottom: 0;
+      }
+
+      &::placeholder {
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+
+    button {
+      background-color: $green;
+      border: none;
+      font-size: 1rem;
+      color: $white;
+      padding: 1rem 1.625rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      img {
+        margin-right: 3px;
+      }
+    }
+  }
+  .errorMessage {
+    margin-top: 0.5rem;
+    color: red;
+    font-size: 0.8rem;
+  }
+}

@@ -85,3 +85,9 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.modalOpen {
+  // height: 100vh;
+  // width: 100vw;
+  overflow: hidden;
+}

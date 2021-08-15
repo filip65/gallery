@@ -2,20 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
 }
-
-/* :root,
-html,
-.App,
-body {
-  width: 100vw;
-  overflow-x: hidden;
-} */
 
 #root {
   overflow: hidden;

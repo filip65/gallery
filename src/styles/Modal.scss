@@ -1,0 +1,40 @@
+@import "./colors";
+.modal {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.644);
+  z-index: 10000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container {
+    width: 85%;
+    max-width: 720px;
+    background-color: white;
+    padding: 30px;
+    position: relative;
+  }
+
+  .closeBtn {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    color: $white;
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+}

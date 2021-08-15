@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from "react";
-// import AddCategory from "../components/AddCategory";
 import Card from "../components/Card";
 import addIcon from "../images/add_icon_circle.png";
 import "../styles/Home.scss";
 
-function Home({ headerBg }) {
+function Home({ headerBg, setIsAddGalleryModalOpen }) {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    // try {
-    //   const response = await fetch("http://api.programator.sk/gallery");
-    //   const data = await response.json();
-    //   setCategories(data.galleries);
-    // } catch (error) {
-    //   console.log(error);
-    // }
     fetch("http://api.programator.sk/gallery")
       .then((res) => {
         return res.json();
@@ -31,6 +23,11 @@ function Home({ headerBg }) {
     getCategories();
   }, []);
 
+  const openGalleryModal = () => {
+    setIsAddGalleryModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
   return (
     <div className="home list">
       {/* tu sa mapnu kategorie potom */}
@@ -40,12 +37,10 @@ function Home({ headerBg }) {
           <Card key={path} name={name} image={image} headerBg={headerBg} />
         );
       })}
-      <div className="addCategory">
+      <div className="addCategory" onClick={openGalleryModal}>
         <img src={addIcon} alt="" />
         <p>Pridať kategóriu</p>
       </div>
-
-      {/* <AddCategory /> */}
     </div>
   );
 }
