@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 
 import "./App.scss";
 import AddGalleryModal from "./components/AddGalleryModal";
 import Home from "./pages/Home";
 
 import Modal from "./components/Modal";
+import Subtitle from "./components/Subtitle";
 
 function App() {
-  const location = useLocation();
   const headerBg = useRef(null);
   const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
 
@@ -27,24 +27,14 @@ function App() {
       });
   };
 
-  const getText = (location) => {
-    switch (location.pathname) {
-      case "/":
-        return "kategórie";
-      case "/gallery":
-        return "nazov galerie";
-      default:
-        return "bad page...";
-    }
-  };
-
   return (
     <div className="App">
       {/* obsahuje meniaci sa background */}
       <div className="header" ref={headerBg}></div>
       <div className="wrapper">
         <h1 className="title">fotogaléria</h1>
-        <h2 className="subtitle">{getText(location)}</h2>
+        <Subtitle />
+        {/* <h2 className="subtitle">{getText(location)}</h2> */}
         <Switch>
           <Route path="/" exact>
             <Home
@@ -55,7 +45,8 @@ function App() {
             />
           </Route>
           <Route path="/gallery:path">
-            <h2>gallery</h2>
+            {/* <h2>gallery</h2> */}
+            {/* <Link to="/">chodme spat</Link> */}
           </Route>
         </Switch>
       </div>

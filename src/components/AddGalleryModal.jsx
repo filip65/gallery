@@ -27,6 +27,9 @@ function AddGalleryModal({ setIsAddGalleryModalOpen, getCategories }) {
   };
 
   const onSubmit = (data) => {
+    //   odstranenie medzery pred a za slovom
+    data.name = data.name.trim();
+    // kontrola pritomnosti / v slove
     if (data.name.includes("/")) {
       setError("name", {
         type: "manual",
