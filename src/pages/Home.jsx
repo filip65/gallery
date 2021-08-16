@@ -5,8 +5,22 @@ import Modal from "../components/Modal";
 import addIcon from "../images/add_icon_circle.png";
 import "../styles/Home.scss";
 
-function Home({ categories, getCategories, headerBg }) {
+function Home({ headerBg }) {
   const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = async () => {
+    fetch("http://api.programator.sk/gallery")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setCategories(data.galleries);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     getCategories();
@@ -26,6 +40,7 @@ function Home({ categories, getCategories, headerBg }) {
           <Card key={path} name={name} image={image} headerBg={headerBg} />
         );
       })}
+
       <div className="addCategory" onClick={openGalleryModal}>
         <img src={addIcon} alt="" />
         <p>Pridať kategóriu</p>

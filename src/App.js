@@ -10,21 +10,6 @@ import Subtitle from "./components/Subtitle";
 
 function App() {
   const headerBg = useRef(null);
-  // const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-
-  const getCategories = async () => {
-    fetch("http://api.programator.sk/gallery")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setCategories(data.galleries);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   return (
     <div className="App">
@@ -36,12 +21,9 @@ function App() {
         {/* <h2 className="subtitle">{getText(location)}</h2> */}
         <Switch>
           <Route path="/" exact>
-            <Home
-              categories={categories}
-              getCategories={getCategories}
-              headerBg={headerBg}
-            />
+            <Home headerBg={headerBg} />
           </Route>
+
           <Route path="/gallery:path">
             {/* <h2>gallery</h2> */}
             {/* <Link to="/">chodme spat</Link> */}
