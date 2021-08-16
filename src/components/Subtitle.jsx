@@ -1,22 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
-const getText = (location) => {
-  switch (location.pathname) {
-    case "/":
-      return "kategórie";
-    case "/gallery":
-      return "nazov galerie";
-    default:
-      return "bad page...";
-  }
-};
+import backIcon from "../images/back_icon.png";
 
-function Subtitle() {
+// const getText = (text, location) => {
+//   if (text) {
+//     return text;
+//   } else if (location.pathname === "/") {
+//     return "kategórie";
+//   } else {
+//     return "zla stranka";
+//   }
+// };
+
+function Subtitle({ text, setSubtitleText }) {
   const location = useLocation();
 
-  return <h2 className="subtitle">{getText(location)}</h2>;
+  return (
+    <>
+      <h2 className="subtitle">
+        {location.pathname !== "/" && (
+          <Link to="/" onClick={() => setSubtitleText("kategórie")}>
+            <img src={backIcon} alt="" />
+          </Link>
+        )}
+        {text}
+      </h2>
+    </>
+  );
 }
 
 export default Subtitle;

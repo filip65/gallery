@@ -1,15 +1,41 @@
-import { useRef, useState } from "react";
-import { Switch, Route, Link } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
+import { Switch, Route } from "react-router-dom";
 
 import "./App.scss";
-import AddGalleryModal from "./components/AddGalleryModal";
 import Home from "./pages/Home";
-
-import Modal from "./components/Modal";
 import Subtitle from "./components/Subtitle";
+import Gallery from "./pages/Gallery";
 
 function App() {
   const headerBg = useRef(null);
+  const [headerBgImagePath, setHeaderBgImagePath] = useState("");
+  const [subtitleText, setSubtitleText] = useState("kategórie");
+
+  useEffect(() => {
+    const changeHeaderBgImage = async () => {
+      if (headerBgImagePath !== null) {
+        fetch(
+          `http://api.programator.sk/images/300x0/${headerBgImagePath}`
+        ).then((res) => {
+          headerBg.current.style.backgroundImage = `url(${res.url})`;
+        });
+      } else {
+        headerBg.current.style.backgroundImage = `url("https://upload.wikimedia.org/wikipedia/commons/b/b1/Missing-image-232x150.png")`;
+      }
+    };
+    changeHeaderBgImage();
+  }, [headerBgImagePath]);
+
+  // nastavenie headerBg podla obrazka 1. kategorie
+  useEffect(() => {
+    const getFisrtGalleriesImage = async () => {
+      fetch("http://api.programator.sk/gallery")
+        .then((res) => res.json())
+        .then((data) => setHeaderBgImagePath(data.galleries[0].image.fullpath));
+    };
+
+    getFisrtGalleriesImage();
+  }, []);
 
   return (
     <div className="App">
@@ -17,16 +43,22 @@ function App() {
       <div className="header" ref={headerBg}></div>
       <div className="wrapper">
         <h1 className="title">fotogaléria</h1>
-        <Subtitle />
+        <Subtitle text={subtitleText} setSubtitleText={setSubtitleText} />
         {/* <h2 className="subtitle">{getText(location)}</h2> */}
         <Switch>
           <Route path="/" exact>
-            <Home headerBg={headerBg} />
+            <Home
+              headerBgImagePath
+              setHeaderBgImagePath={setHeaderBgImagePath}
+            />
           </Route>
 
-          <Route path="/gallery:path">
-            {/* <h2>gallery</h2> */}
-            {/* <Link to="/">chodme spat</Link> */}
+          <Route path="/gallery/:path">
+            <Gallery
+              setSubtitleText={setSubtitleText}
+              setHeaderBgImagePath={setHeaderBgImagePath}
+              headerBg={headerBg}
+            />
           </Route>
         </Switch>
       </div>

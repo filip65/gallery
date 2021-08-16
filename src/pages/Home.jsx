@@ -5,7 +5,7 @@ import Modal from "../components/Modal";
 import addIcon from "../images/add_icon_circle.png";
 import "../styles/Home.scss";
 
-function Home({ headerBg }) {
+function Home({ headerBgImagePath, setHeaderBgImagePath }) {
   const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
@@ -37,7 +37,13 @@ function Home({ headerBg }) {
       {categories.map((category) => {
         const { name, image, path } = category;
         return (
-          <Card key={path} name={name} image={image} headerBg={headerBg} />
+          <Card
+            key={path}
+            name={name}
+            image={image}
+            setHeaderBgImagePath={setHeaderBgImagePath}
+            path={path}
+          />
         );
       })}
 
