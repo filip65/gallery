@@ -12,10 +12,12 @@
   align-items: center;
 
   .container {
-    width: 85%;
+    width: fit-content;
     max-width: 720px;
-    background-color: white;
-    padding: 30px;
+    width: 85%;
+    // background-color: white;
+    // padding: 30px;
+    margin: 0 2rem;
     position: relative;
   }
 

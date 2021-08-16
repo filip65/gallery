@@ -1,6 +1,10 @@
 @import "./colors";
 
 .addGalleryModal {
+  width: 100%;
+  padding: 30px;
+  background-color: white;
+
   h3 {
     color: $darkText;
     margin-bottom: 2rem;

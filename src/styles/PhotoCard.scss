@@ -1,0 +1,14 @@
+.photoCard {
+  height: 230px;
+  width: 100%;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: 0.3s transform;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+}

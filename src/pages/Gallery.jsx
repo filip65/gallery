@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import PhotoCard from "../components/PhotoCard";
+import PhotoCarousel from "../components/PhotoCarousel";
+import Modal from "../components/Modal";
 
 function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
   const { path } = useParams();
   const [gallery, setGallery] = useState({});
+  const [isCarouselOpen, setIsCarouseOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
 
   const getImageUrl = async (fullpath) => {
     fetch(`http://api.programator.sk/images/300x0/${fullpath}`)
@@ -29,14 +34,42 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
             headerBg.current.style.backgroundImage =
               "url(https://images.pexels.com/photos/1674049/pexels-photo-1674049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)";
           }
-          console.log(data);
         });
     };
 
     getGalleryInfo();
   }, [path, setSubtitleText, setHeaderBgImagePath]);
 
-  return <div className="gallery"></div>;
+  const handlePhotoCardClick = (index) => {
+    setIsCarouseOpen(true);
+    setPhotoIndex(index);
+  };
+
+  return (
+    <div className="gallery list">
+      {gallery.images &&
+        gallery.images.map((image, index) => {
+          return (
+            <PhotoCard
+              key={image.path}
+              fullpath={image.fullpath}
+              index={index}
+              handlePhotoCardClick={handlePhotoCardClick}
+            />
+          );
+        })}
+
+      {isCarouselOpen && (
+        <Modal setIsOpen={setIsCarouseOpen}>
+          <PhotoCarousel
+            images={gallery.images}
+            index={photoIndex}
+            setIndex={setPhotoIndex}
+          />
+        </Modal>
+      )}
+    </div>
+  );
 }
 
 export default Gallery;
