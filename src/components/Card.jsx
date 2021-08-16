@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Card.scss";
 
-function Card({ image, name, headerBg, path, setHeaderBgImagePath }) {
+function Card({ image, name, path, setHeaderBgImagePath }) {
   const [imageURL, setImageURL] = useState("");
+  const [numberOfImages, setNumberOfImages] = useState(0);
 
   useEffect(() => {
     const getImage = async () => {
@@ -22,6 +23,16 @@ function Card({ image, name, headerBg, path, setHeaderBgImagePath }) {
     getImage();
   }, [image]);
 
+  // zobrazenie postu fotiak v galerii
+  useEffect(() => {
+    fetch(`http://api.programator.sk/gallery/${path}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const amount = data.images.length;
+        setNumberOfImages(amount);
+      });
+  }, []);
+
   const changeBg = () => {
     if (image) {
       setHeaderBgImagePath(image.fullpath);
@@ -38,6 +49,11 @@ function Card({ image, name, headerBg, path, setHeaderBgImagePath }) {
       ></div>
       <div className="text">
         <h3 className="name">{name}</h3>
+        {numberOfImages > 0 && (
+          <p className="numberOfPhotos">
+            {numberOfImages === 1 ? "1 fotka" : `${numberOfImages} fotiek`}
+          </p>
+        )}
       </div>
     </Link>
   );

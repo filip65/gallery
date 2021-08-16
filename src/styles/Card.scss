@@ -25,6 +25,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    animation: bgAnimation 0.5s;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes bgAnimation {
+    from {
+      background-position: 0 -400px;
+    }
+    to {
+      background-position: center;
+    }
   }
 
   .text {
@@ -35,5 +46,10 @@
       color: $darkText;
       font-size: 1rem;
     }
+  }
+
+  .numberOfPhotos {
+    color: $lightText;
+    font-size: 0.85rem;
   }
 }
