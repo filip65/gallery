@@ -11,23 +11,29 @@
   .nextIcon,
   .prevIcon {
     position: absolute;
-    width: 1rem;
-    object-fit: contain;
+    width: 2rem;
+    height: 2rem;
     top: 50%;
-    fill: white;
     transition: 0.2s fill;
     cursor: pointer;
+    background: transparent;
+    border: none;
 
-    &:hover {
+    svg {
+      object-fit: contain;
+      fill: white;
+    }
+
+    &:hover > svg {
       fill: rgba(255, 255, 255, 0.575);
     }
   }
 
   .nextIcon {
-    right: -5%;
+    right: -2.7rem;
   }
 
   .prevIcon {
-    left: -5%;
+    left: -2.7rem;
   }
 }
