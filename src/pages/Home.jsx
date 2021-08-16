@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
+import AddGalleryModal from "../components/AddGalleryModal";
 import Card from "../components/Card";
+import Modal from "../components/Modal";
 import addIcon from "../images/add_icon_circle.png";
 import "../styles/Home.scss";
 
-function Home({
-  categories,
-  getCategories,
-  headerBg,
-  setIsAddGalleryModalOpen,
-}) {
+function Home({ categories, getCategories, headerBg }) {
+  const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
+
   useEffect(() => {
     getCategories();
   }, []);
@@ -31,6 +30,15 @@ function Home({
         <img src={addIcon} alt="" />
         <p>Pridať kategóriu</p>
       </div>
+
+      {isAddGalleryModalOpen && (
+        <Modal setIsOpen={setIsAddGalleryModalOpen}>
+          <AddGalleryModal
+            setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
+            getCategories={getCategories}
+          />
+        </Modal>
+      )}
     </div>
   );
 }

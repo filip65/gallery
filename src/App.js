@@ -10,8 +10,7 @@ import Subtitle from "./components/Subtitle";
 
 function App() {
   const headerBg = useRef(null);
-  const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
-
+  // const [isAddGalleryModalOpen, setIsAddGalleryModalOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -41,7 +40,6 @@ function App() {
               categories={categories}
               getCategories={getCategories}
               headerBg={headerBg}
-              setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
             />
           </Route>
           <Route path="/gallery:path">
@@ -50,15 +48,6 @@ function App() {
           </Route>
         </Switch>
       </div>
-
-      {isAddGalleryModalOpen && (
-        <Modal setIsOpen={setIsAddGalleryModalOpen}>
-          <AddGalleryModal
-            setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
-            getCategories={getCategories}
-          />
-        </Modal>
-      )}
     </div>
   );
 }
