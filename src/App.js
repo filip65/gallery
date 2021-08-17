@@ -26,17 +26,6 @@ function App() {
     changeHeaderBgImage();
   }, [headerBgImagePath]);
 
-  // nastavenie headerBg podla obrazka 1. kategorie
-  useEffect(() => {
-    const getFisrtGalleriesImage = async () => {
-      fetch("http://api.programator.sk/gallery")
-        .then((res) => res.json())
-        .then((data) => setHeaderBgImagePath(data.galleries[0].image.fullpath));
-    };
-
-    getFisrtGalleriesImage();
-  }, []);
-
   return (
     <div className="App">
       {/* obsahuje meniaci sa background */}

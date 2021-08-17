@@ -41,6 +41,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
         setGallery(data);
         setSubtitleText(data.gallery.name);
         if (data.images.length > 0) {
+          console.log("galeria");
           setHeaderBgImagePath(data.images[0].fullpath);
         } else {
           // default obrazok ak galeria nema zatial ziaden obrazok

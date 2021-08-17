@@ -26,6 +26,12 @@ function Home({ headerBgImagePath, setHeaderBgImagePath }) {
     getCategories();
   }, []);
 
+  useEffect(() => {
+    if (categories[0]) {
+      setHeaderBgImagePath(categories[0].image?.fullpath);
+    }
+  }, [categories, setHeaderBgImagePath]);
+
   const openGalleryModal = () => {
     setIsAddGalleryModalOpen(true);
     document.body.style.overflow = "hidden";
