@@ -4,7 +4,6 @@ import "../styles/AddPhotosModal.scss";
 
 function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
   const [files, setFiles] = useState([]);
-  const [filesNumber, setFilesNumber] = useState(0);
   const sendBtn = useRef(null);
   const [sendBtnText, setSendBtnText] = useState("pridať");
   let numberOfSendPhotos = 0;

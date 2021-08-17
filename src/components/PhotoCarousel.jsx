@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import nextIcon from "../images/next_icon.svg";
-import prevIcon from "../images/prev_icon.svg";
 import "../styles/PhotoCarousel.scss";
 
 function PhotoCarousel({ images, index, setIndex }) {
@@ -14,7 +12,7 @@ function PhotoCarousel({ images, index, setIndex }) {
     };
 
     getImageUrl();
-  }, [index]);
+  }, [index, images]);
 
   const nextImage = () => {
     if (index === images.length - 1) {

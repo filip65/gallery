@@ -17,7 +17,7 @@ function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [fullpath]);
 
   return (
     <div

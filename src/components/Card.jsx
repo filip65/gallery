@@ -31,7 +31,7 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
         const amount = data.images.length;
         setNumberOfImages(amount);
       });
-  }, []);
+  }, [path]);
 
   const changeBg = () => {
     if (image) {

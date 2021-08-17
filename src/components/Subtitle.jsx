@@ -1,18 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useLocation, Link } from "react-router-dom";
 
 import backIcon from "../images/back_icon.png";
-
-// const getText = (text, location) => {
-//   if (text) {
-//     return text;
-//   } else if (location.pathname === "/") {
-//     return "kategórie";
-//   } else {
-//     return "zla stranka";
-//   }
-// };
 
 function Subtitle({ text, setSubtitleText }) {
   const location = useLocation();
