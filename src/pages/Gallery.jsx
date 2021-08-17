@@ -116,6 +116,8 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
             images={gallery.images}
             index={photoIndex}
             setIndex={setPhotoIndex}
+            setIsCarouseOpen={setIsCarouseOpen}
+            getGalleryInfo={getGalleryInfo}
           />
         </Modal>
       )}

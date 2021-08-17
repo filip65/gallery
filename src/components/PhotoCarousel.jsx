@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../styles/PhotoCarousel.scss";
+import DeleteBtn from "./DeleteBtn";
 
-function PhotoCarousel({ images, index, setIndex }) {
+function PhotoCarousel({
+  images,
+  index,
+  setIndex,
+  setIsCarouseOpen,
+  getGalleryInfo,
+}) {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
@@ -28,6 +35,15 @@ function PhotoCarousel({ images, index, setIndex }) {
     } else {
       setIndex((oldIndex) => oldIndex - 1);
     }
+  };
+
+  const deleteImage = async () => {
+    fetch(`http://api.programator.sk/gallery/${images[index].fullpath}`, {
+      method: "delete",
+    }).then(() => {
+      setIsCarouseOpen(false);
+      getGalleryInfo();
+    });
   };
 
   return (
@@ -67,6 +83,7 @@ function PhotoCarousel({ images, index, setIndex }) {
           />
         </svg>
       </button>
+      <DeleteBtn onClick={deleteImage} />
     </div>
   );
 }
