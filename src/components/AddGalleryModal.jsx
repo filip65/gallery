@@ -1,5 +1,5 @@
 import React from "react";
-import AddIcon from "../images/add_icon.png";
+import AddIcon from "../images/add_icon.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";

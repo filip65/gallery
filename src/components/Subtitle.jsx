@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
-import backIcon from "../images/back_icon.png";
+import backIcon from "../images/back_icon.svg";
 
 function Subtitle({ text, setSubtitleText }) {
   const location = useLocation();

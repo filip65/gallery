@@ -1,5 +1,5 @@
 import React from "react";
-import closeIcon from "../images/close_icon.png";
+import closeIcon from "../images/close_icon.svg";
 import "../styles/Modal.scss";
 
 function Modal({ setIsOpen, children }) {
