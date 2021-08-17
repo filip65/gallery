@@ -2,7 +2,7 @@
   "name": "gallery",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://filip65.github.io/gallery/",
+  // "homepage": "https://filip65.github.io/gallery/",
   "dependencies": {
     "@hookform/resolvers": "^2.7.1",
     "@testing-library/jest-dom": "^5.14.1",
