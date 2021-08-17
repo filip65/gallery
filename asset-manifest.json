@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/gallery/static/css/main.6b0db2c9.chunk.css",
+    "main.js": "/gallery/static/js/main.6995ae75.chunk.js",
+    "main.js.map": "/gallery/static/js/main.6995ae75.chunk.js.map",
+    "runtime-main.js": "/gallery/static/js/runtime-main.32e0e68d.js",
+    "runtime-main.js.map": "/gallery/static/js/runtime-main.32e0e68d.js.map",
+    "static/js/2.dcdbb882.chunk.js": "/gallery/static/js/2.dcdbb882.chunk.js",
+    "static/js/2.dcdbb882.chunk.js.map": "/gallery/static/js/2.dcdbb882.chunk.js.map",
+    "static/js/3.bd1c4fb6.chunk.js": "/gallery/static/js/3.bd1c4fb6.chunk.js",
+    "static/js/3.bd1c4fb6.chunk.js.map": "/gallery/static/js/3.bd1c4fb6.chunk.js.map",
+    "index.html": "/gallery/index.html",
+    "static/css/main.6b0db2c9.chunk.css.map": "/gallery/static/css/main.6b0db2c9.chunk.css.map",
+    "static/js/2.dcdbb882.chunk.js.LICENSE.txt": "/gallery/static/js/2.dcdbb882.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/gallery/static/media/pexels-photo-186077.587523b0.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.32e0e68d.js",
+    "static/js/2.dcdbb882.chunk.js",
+    "static/css/main.6b0db2c9.chunk.css",
+    "static/js/main.6995ae75.chunk.js"
+  ]
+}
