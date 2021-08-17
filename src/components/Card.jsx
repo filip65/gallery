@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Card.scss";
 
+import { BackgroundImage } from "react-image-and-background-image-fade";
+
 function Card({ image, name, path, setHeaderBgImagePath }) {
   const [imageURL, setImageURL] = useState("");
   const [numberOfImages, setNumberOfImages] = useState(0);
@@ -43,10 +45,17 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
 
   return (
     <Link to={`/gallery/${path}`} className="card" onMouseEnter={changeBg}>
-      <div
+      {/* <div
         className="image"
         style={{ backgroundImage: `url(${imageURL})` }}
-      ></div>
+      ></div> */}
+      {/* <BackgroundImage src={imageURL} lazyLoad className="image" /> */}
+      <BackgroundImage
+        src={imageURL}
+        className="image"
+        lazyLoad
+        height="100%"
+      />
       <div className="text">
         <h3 className="name">{name}</h3>
         {numberOfImages > 0 && (

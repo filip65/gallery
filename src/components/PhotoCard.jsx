@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/PhotoCard.scss";
+import { BackgroundImage } from "react-image-and-background-image-fade";
 
 function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
   const [imageUrl, setImageUrl] = useState("");
@@ -20,11 +21,13 @@ function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
   }, [fullpath]);
 
   return (
-    <div
+    <BackgroundImage
       className="photoCard"
-      style={{ backgroundImage: `url(${imageUrl})` }}
+      // style={{ backgroundImage: `url(${imageUrl})` }}
+      src={imageUrl}
+      lazyLoad
       onClick={() => handlePhotoCardClick(index)}
-    ></div>
+    ></BackgroundImage>
   );
 }
 
