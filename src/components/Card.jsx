@@ -45,11 +45,6 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
 
   return (
     <Link to={`/gallery/${path}`} className="card" onMouseEnter={changeBg}>
-      {/* <div
-        className="image"
-        style={{ backgroundImage: `url(${imageURL})` }}
-      ></div> */}
-      {/* <BackgroundImage src={imageURL} lazyLoad className="image" /> */}
       <BackgroundImage
         src={imageURL}
         className="image"

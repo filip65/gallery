@@ -1,10 +1,8 @@
 import React from "react";
 import AddIcon from "../images/add_icon.png";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
 import "../styles/AddGalleryModal.scss";
 
 const schema = yup.object().shape({
@@ -46,7 +44,6 @@ function AddGalleryModal({ setIsAddGalleryModalOpen, getCategories }) {
       if (res.ok) {
         closeModal();
         getCategories();
-        // window.location.reload();
       } else if (res.status === 409) {
         setError("name", {
           type: "manual",

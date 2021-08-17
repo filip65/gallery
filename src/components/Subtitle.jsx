@@ -1,7 +1,5 @@
 import React from "react";
-
 import { useLocation, Link } from "react-router-dom";
-
 import backIcon from "../images/back_icon.png";
 
 function Subtitle({ text, setSubtitleText }) {

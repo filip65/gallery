@@ -16,24 +16,6 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
   const [isAddPhotosModalOpen, setIsAddPhotosModalOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  // const getGalleryInfo = async () => {
-  //   fetch(`http://api.programator.sk/gallery/${path}`)
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       setGallery(data);
-  //       setSubtitleText(data.gallery.name);
-  //       if (data.images.length > 0) {
-  //         setHeaderBgImagePath(data.images[0].fullpath);
-  //       } else {
-  //         // default obrazok ak galeria nema zatial ziaden obrazok
-  //         headerBg.current.style.backgroundImage =
-  //           "url(https://images.pexels.com/photos/1674049/pexels-photo-1674049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)";
-  //       }
-  //     });
-  // };
-
   const getGalleryInfo = useCallback(async () => {
     fetch(`http://api.programator.sk/gallery/${path}`)
       .then((res) => {
@@ -43,7 +25,6 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
         setGallery(data);
         setSubtitleText(data.gallery.name);
         if (data.images.length > 0) {
-          console.log("galeria");
           setHeaderBgImagePath(data.images[0].fullpath);
         } else {
           // default obrazok ak galeria nema zatial ziaden obrazok

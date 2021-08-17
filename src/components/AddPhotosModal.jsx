@@ -14,24 +14,6 @@ function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
       setFiles((oldFiles) => {
         return [...oldFiles, ...acceptedFiles];
       });
-      //   console.log(acceptedFiles);
-      // odoslavnie suborov
-      //   const formData = new FormData();
-      //   acceptedFiles.map((file) => {
-      //     formData.append("image", file);
-      //     fetch(`http://api.programator.sk/gallery/${path}`, {
-      //       method: "POST",
-      //       body: formData,
-      //     }).then((res) => {
-      //       getGalleryInfo();
-      //       setIsAddPhotosModalOpen(false);
-      //     });
-      //   });
-      //   setFiles(
-      //     acceptedFiles.map((file) =>
-      //       Object.assign(file, { preview: URL.createObjectURL(file) })
-      //     )
-      //   );
     },
   });
 
@@ -44,7 +26,6 @@ function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
         method: "POST",
         body: formData,
       }).then((res) => {
-        console.log(res);
         numberOfSendPhotos++;
 
         //ak sa uz vsetky fotky nahrali
@@ -60,8 +41,6 @@ function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
       });
     });
   };
-
-  useEffect(() => {}, [numberOfSendPhotos]);
 
   return (
     <div className="addPhotosModal">

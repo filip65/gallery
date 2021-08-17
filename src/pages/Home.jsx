@@ -18,7 +18,7 @@ function Home({ headerBgImagePath, setHeaderBgImagePath }) {
         setCategories(data.galleries);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
   };
 

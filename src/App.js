@@ -50,6 +50,7 @@ function App() {
             />
           </Route>
         </Switch>
+        <p className="bart">webdesign bart.sk</p>
       </div>
     </div>
   );

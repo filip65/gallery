@@ -8,7 +8,6 @@ function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
   useEffect(() => {
     fetch(`http://api.programator.sk/images/300x0/${fullpath}`)
       .then((res) => {
-        // console.log(res);
         if (res.ok) {
           setImageUrl(res.url);
         } else {
@@ -21,13 +20,16 @@ function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
   }, [fullpath]);
 
   return (
-    <BackgroundImage
-      className="photoCard"
-      // style={{ backgroundImage: `url(${imageUrl})` }}
-      src={imageUrl}
-      lazyLoad
-      onClick={() => handlePhotoCardClick(index)}
-    ></BackgroundImage>
+    <div className="photoCard">
+      <BackgroundImage
+        height="100%"
+        width="100%"
+        className="photoCard__bg"
+        src={imageUrl}
+        lazyLoad
+        onClick={() => handlePhotoCardClick(index)}
+      ></BackgroundImage>
+    </div>
   );
 }
 
