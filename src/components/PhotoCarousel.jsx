@@ -47,7 +47,6 @@ function PhotoCarousel({ images, index, setIndex }) {
           <path
             id="prev_icon"
             data-name="prev icon"
-            class="cls-1"
             d="M408.157,552l2.856-2.82L401.736,540l9.277-9.18L408.157,528,396,540Z"
             transform="translate(-396 -528)"
           />
@@ -65,7 +64,6 @@ function PhotoCarousel({ images, index, setIndex }) {
           <path
             id="next_icon"
             data-name="next icon"
-            class="cls-1"
             d="M1193.77,528l-2.85,2.82,9.26,9.18-9.26,9.18,2.85,2.82,12.13-12Z"
             transform="translate(-1190.94 -528)"
           />

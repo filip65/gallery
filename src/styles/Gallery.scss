@@ -1,0 +1,24 @@
+@import "./colors";
+
+.addPhotos {
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: $lightText;
+  border: 3px solid $border;
+  border-radius: 4px;
+  transition: 0.3s transform;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+
+  svg {
+    fill: $lightText;
+    margin-bottom: 0.8rem;
+  }
+}
