@@ -53,11 +53,9 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
       />
       <div className="text">
         <h3 className="name">{name}</h3>
-        {numberOfImages > 0 && (
-          <p className="numberOfPhotos">
-            {numberOfImages === 1 ? "1 fotka" : `${numberOfImages} fotiek`}
-          </p>
-        )}
+        <p className="numberOfPhotos">
+          {numberOfImages === 1 ? "1 fotka" : `${numberOfImages} fotiek`}
+        </p>
       </div>
     </Link>
   );
