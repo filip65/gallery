@@ -50,6 +50,11 @@
 
   .numberOfPhotos {
     color: $lightText;
+    font-size: 0;
+    transition: 0.2s font-size;
+  }
+
+  &:hover .numberOfPhotos {
     font-size: 0.85rem;
   }
 }
