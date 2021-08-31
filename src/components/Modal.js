@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import closeIcon from "../images/close_icon.svg";
 import "../styles/Modal.scss";
 
@@ -7,6 +7,19 @@ function Modal({ setIsOpen, children }) {
     setIsOpen(false);
     document.body.style.overflow = "visible";
   };
+
+  const closeModalEsc = (e) => {
+    if (e.code === "Escape") {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", (e) => closeModalEsc(e));
+    return () => {
+      document.removeEventListener("keydown", (e) => closeModalEsc(e));
+    };
+  }, []);
 
   return (
     <div className="modal">
