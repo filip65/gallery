@@ -4,9 +4,9 @@
   width: 100vw;
   min-height: 100vh;
   background-color: $background;
-  z-index: 1;
+  // z-index: 1;
   overflow-x: hidden;
-  position: relative;
+  // position: relative;
   padding-bottom: 1rem;
 }
 
@@ -15,6 +15,7 @@
   max-width: 1140px;
   margin: 10vh auto 0 auto;
   z-index: 10;
+  position: relative;
 }
 
 .header {
@@ -29,7 +30,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -2;
+  // z-index: -2;
 
   transition: background-image 0.5s;
 
@@ -104,4 +105,8 @@
 .bart {
   text-transform: lowercase;
   color: $lightText;
+}
+
+body.ReactModal__Body--open {
+  overflow-y: hidden;
 }
