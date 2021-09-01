@@ -1,16 +1,17 @@
 @import "./colors";
 
 .card {
-  height: 215px;
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   text-align: center;
-  transition: all 0.3s;
   text-decoration: none;
+  transition: 0.3s transform;
   box-shadow: 0 4px 7px -4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding-bottom: 59px;
 
   &:hover,
   &:active {
@@ -18,15 +19,21 @@
     box-shadow: 0px 5px 12px -6px #00000059;
   }
 
-  .image {
-    flex: 1;
+  .background-image-container {
     width: 100%;
-    min-height: 100px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    animation: bgAnimation 0.5s;
-    animation-delay: 0.3s;
+    padding-top: 56.23%;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(212, 212, 212);
+
+    .image {
+      width: 100%;
+      min-height: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   @keyframes bgAnimation {
@@ -41,6 +48,10 @@
   .text {
     padding: 20px 0;
     background-color: $background;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
 
     .name {
       color: $darkText;
@@ -51,7 +62,7 @@
   .numberOfPhotos {
     color: $lightText;
     font-size: 0;
-    transition: 0.2s font-size;
+    transition: 0.3s font-size;
   }
 
   &:hover .numberOfPhotos {

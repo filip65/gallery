@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Card.scss";
 
-import { BackgroundImage } from "react-image-and-background-image-fade";
+import LazyLoad from "react-lazyload";
 
 function Card({ image, name, path, setHeaderBgImagePath }) {
   const [imageURL, setImageURL] = useState("");
@@ -45,12 +45,12 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
 
   return (
     <Link to={`/gallery/${path}`} className="card" onMouseEnter={changeBg}>
-      <BackgroundImage
-        src={imageURL}
-        className="image"
-        lazyLoad
-        height="100%"
-      />
+      <div className="background-image-container">
+        <LazyLoad offset={200}>
+          <img src={imageURL} alt="" className="image" />
+        </LazyLoad>
+      </div>
+
       <div className="text">
         <h3 className="name">{name}</h3>
         <p className="numberOfPhotos">

@@ -53,18 +53,11 @@ function Home({ headerBgImagePath, setHeaderBgImagePath }) {
       })}
 
       <div className="addCategory" onClick={openGalleryModal}>
-        <img src={addIcon} alt="" />
-        <p>Pridať kategóriu</p>
+        <div className="addCategory__content">
+          <img src={addIcon} alt="" />
+          <p>Pridať kategóriu</p>
+        </div>
       </div>
-
-      {/* {isAddGalleryModalOpen && (
-        <Modal setIsOpen={setIsAddGalleryModalOpen}>
-          <AddGalleryModal
-            setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
-            getCategories={getCategories}
-          />
-        </Modal>
-      )} */}
 
       <Modal
         setIsOpen={setIsAddGalleryModalOpen}
