@@ -19,9 +19,7 @@
 }
 
 .header {
-  width: 100vw;
   height: 35vh;
-
   background-image: url("./images/pexels-photo-186077.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,6 +28,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   // z-index: -2;
 
   transition: background-image 0.5s;
