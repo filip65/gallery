@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { useDropzone } from "react-dropzone";
 import "../styles/AddPhotosModal.scss";
 

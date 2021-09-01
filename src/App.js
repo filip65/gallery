@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import "./App.scss";
 import Home from "./pages/Home";
@@ -48,6 +48,10 @@ function App() {
               setHeaderBgImagePath={setHeaderBgImagePath}
               headerBg={headerBg}
             />
+          </Route>
+
+          <Route path="*">
+            <Redirect to="/" />
           </Route>
         </Switch>
         <p className="bart">webdesign bart.sk</p>

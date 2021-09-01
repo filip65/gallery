@@ -2,22 +2,29 @@ import React from "react";
 import closeIcon from "../images/close_icon.svg";
 import "../styles/Modal.scss";
 
-function Modal({ setIsOpen, children }) {
+import ReactModal from "react-modal";
+ReactModal.setAppElement("#root");
+
+function Modal({ setIsOpen, isOpen, children }) {
   const closeModal = () => {
     setIsOpen(false);
-    document.body.style.overflow = "visible";
   };
 
   return (
-    <div className="modal">
-      <div className="container">
-        {children}
-        <button className="closeBtn" onClick={closeModal}>
-          <img src={closeIcon} alt="close icon" />
-          Zavrieť
-        </button>
-      </div>
-    </div>
+    <ReactModal
+      isOpen={isOpen}
+      onRequestClose={() => setIsOpen(false)}
+      closeModalEsc={true}
+      shouldCloseOnOverlayClick={false}
+      overlayClassName={"modal"}
+      className={"container"}
+    >
+      {children}
+      <button className="closeBtn" onClick={closeModal}>
+        <img src={closeIcon} alt="close icon" />
+        Zavrieť
+      </button>
+    </ReactModal>
   );
 }
 

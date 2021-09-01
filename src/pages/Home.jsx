@@ -34,7 +34,6 @@ function Home({ headerBgImagePath, setHeaderBgImagePath }) {
 
   const openGalleryModal = () => {
     setIsAddGalleryModalOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   return (
@@ -58,14 +57,24 @@ function Home({ headerBgImagePath, setHeaderBgImagePath }) {
         <p>Pridať kategóriu</p>
       </div>
 
-      {isAddGalleryModalOpen && (
+      {/* {isAddGalleryModalOpen && (
         <Modal setIsOpen={setIsAddGalleryModalOpen}>
           <AddGalleryModal
             setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
             getCategories={getCategories}
           />
         </Modal>
-      )}
+      )} */}
+
+      <Modal
+        setIsOpen={setIsAddGalleryModalOpen}
+        isOpen={isAddGalleryModalOpen}
+      >
+        <AddGalleryModal
+          setIsAddGalleryModalOpen={setIsAddGalleryModalOpen}
+          getCategories={getCategories}
+        />
+      </Modal>
     </div>
   );
 }

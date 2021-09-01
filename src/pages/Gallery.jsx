@@ -91,27 +91,25 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
 
       <DeleteBtn onClick={deleteGallery} />
 
-      {isCarouselOpen && (
-        <Modal setIsOpen={setIsCarouseOpen}>
-          <PhotoCarousel
-            images={gallery.images}
-            index={photoIndex}
-            setIndex={setPhotoIndex}
-            setIsCarouseOpen={setIsCarouseOpen}
-            getGalleryInfo={getGalleryInfo}
-          />
-        </Modal>
-      )}
+      {/* modal for caroseul */}
+      <Modal setIsOpen={setIsCarouseOpen} isOpen={isCarouselOpen}>
+        <PhotoCarousel
+          images={gallery.images}
+          index={photoIndex}
+          setIndex={setPhotoIndex}
+          setIsCarouseOpen={setIsCarouseOpen}
+          getGalleryInfo={getGalleryInfo}
+        />
+      </Modal>
 
-      {isAddPhotosModalOpen && (
-        <Modal setIsOpen={setIsAddPhotosModalOpen}>
-          <AddPhotosModal
-            path={path}
-            getGalleryInfo={getGalleryInfo}
-            setIsAddPhotosModalOpen={setIsAddPhotosModalOpen}
-          />
-        </Modal>
-      )}
+      {/* modal for adding photos */}
+      <Modal setIsOpen={setIsAddPhotosModalOpen} isOpen={isAddPhotosModalOpen}>
+        <AddPhotosModal
+          path={path}
+          getGalleryInfo={getGalleryInfo}
+          setIsAddPhotosModalOpen={setIsAddPhotosModalOpen}
+        />
+      </Modal>
     </div>
   );
 }
