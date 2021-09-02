@@ -6,6 +6,11 @@ const HeaderProvider = ({ children }) => {
   const [headerBg, setHeaderBg] = useState("");
 
   const changeHeaderBg = (value) => {
+    if (value === undefined) {
+      setHeaderBg("##d4d4d4");
+      return;
+    }
+
     if (value[0] === "#") {
       setHeaderBg(value);
     } else {

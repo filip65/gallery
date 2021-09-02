@@ -14,7 +14,7 @@ const getImageUrl = async (image, width = 400) => {
         console.log(err);
       });
   } else {
-    return "#797979";
+    return "#d4d4d4";
   }
 };
 
