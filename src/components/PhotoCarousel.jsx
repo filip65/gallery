@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { environment } from "../environment";
 import "../styles/PhotoCarousel.scss";
 import DeleteBtn from "./DeleteBtn";
+import getImageUrl from "../utils/getImageUrl";
 
 function PhotoCarousel({
   images,
@@ -13,13 +14,7 @@ function PhotoCarousel({
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    const getImageUrl = async () => {
-      fetch(
-        `http://api.programator.sk/images/700x0/${images[index].fullpath}`
-      ).then((res) => setImageUrl(res.url));
-    };
-
-    getImageUrl();
+    getImageUrl(images[index]).then((url) => setImageUrl(url));
   }, [index, images]);
 
   const nextImage = () => {
