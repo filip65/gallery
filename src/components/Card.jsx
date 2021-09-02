@@ -4,10 +4,13 @@ import "../styles/Card.scss";
 import LazyLoad from "react-lazyload";
 import { environment } from "../environment";
 import getImageUrl from "../utils/getImageUrl";
+import { useGetHeaderBg } from "../headerContext";
 
-function Card({ image, name, path, setHeaderBgImagePath }) {
+function Card({ image, name, path }) {
   const [imageUrl, setImageURL] = useState("");
   const [numberOfImages, setNumberOfImages] = useState(0);
+
+  const { changeHeaderBg } = useGetHeaderBg();
 
   useEffect(() => {
     getImageUrl(image).then((url) => {
@@ -25,16 +28,12 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
       });
   }, [path]);
 
-  const changeBg = () => {
-    if (image) {
-      setHeaderBgImagePath(image.fullpath);
-    } else {
-      setHeaderBgImagePath(null);
-    }
-  };
-
   return (
-    <Link to={`/gallery/${path}`} className="card" onMouseEnter={changeBg}>
+    <Link
+      to={`/gallery/${path}`}
+      className="card"
+      onMouseEnter={() => changeHeaderBg(imageUrl)}
+    >
       <div className="background-image-container">
         <LazyLoad offset={200}>
           <img src={imageUrl} alt="" className="image" />
