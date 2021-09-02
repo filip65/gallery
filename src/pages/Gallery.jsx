@@ -61,7 +61,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
             return (
               <PhotoCard
                 key={image.path}
-                fullpath={image.fullpath}
+                image={image}
                 index={index}
                 handlePhotoCardClick={handlePhotoCardClick}
               />

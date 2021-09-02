@@ -3,26 +3,16 @@ import { Link } from "react-router-dom";
 import "../styles/Card.scss";
 import LazyLoad from "react-lazyload";
 import { environment } from "../environment";
+import getImageUrl from "../utils/getImageUrl";
 
 function Card({ image, name, path, setHeaderBgImagePath }) {
-  const [imageURL, setImageURL] = useState("");
+  const [imageUrl, setImageURL] = useState("");
   const [numberOfImages, setNumberOfImages] = useState(0);
 
   useEffect(() => {
-    const getImage = async () => {
-      if (image) {
-        const response = await fetch(
-          `http://api.programator.sk/images/300x0/${image.fullpath}`
-        );
-        setImageURL(response.url);
-      } else {
-        setImageURL(
-          "https://upload.wikimedia.org/wikipedia/commons/b/b1/Missing-image-232x150.png"
-        );
-      }
-    };
-
-    getImage();
+    getImageUrl(image).then((url) => {
+      setImageURL(url);
+    });
   }, [image]);
 
   // zobrazenie postu fotiak v galerii
@@ -47,7 +37,7 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
     <Link to={`/gallery/${path}`} className="card" onMouseEnter={changeBg}>
       <div className="background-image-container">
         <LazyLoad offset={200}>
-          <img src={imageURL} alt="" className="image" />
+          <img src={imageUrl} alt="" className="image" />
         </LazyLoad>
       </div>
 
