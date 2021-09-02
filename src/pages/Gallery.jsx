@@ -71,21 +71,23 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
           className="addPhotos"
           onClick={() => setIsAddPhotosModalOpen(true)}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="46"
-            height="42"
-            viewBox="0 0 46 42"
-          >
-            <defs></defs>
-            <path
-              id="Shape_6_copy_2"
-              data-name="Shape 6 copy 2"
-              d="M784,487v-6h4v6h6v4h-6v6h-4v-6h-6v-4h6Zm6,12v-6h6v-6h14l3.66,4H820a4.012,4.012,0,0,1,4,4v24a4.012,4.012,0,0,1-4,4H788a4.012,4.012,0,0,1-4-4V499h6Zm14,18a10,10,0,1,0-10-10A10,10,0,0,0,804,517Zm-6.4-10a6.4,6.4,0,1,0,6.4-6.4A6.393,6.393,0,0,0,797.6,507Z"
-              transform="translate(-778 -481)"
-            />
-          </svg>
-          <p>pridať fotky</p>
+          <div className="addPhotos__content">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="46"
+              height="42"
+              viewBox="0 0 46 42"
+            >
+              <defs></defs>
+              <path
+                id="Shape_6_copy_2"
+                data-name="Shape 6 copy 2"
+                d="M784,487v-6h4v6h6v4h-6v6h-4v-6h-6v-4h6Zm6,12v-6h6v-6h14l3.66,4H820a4.012,4.012,0,0,1,4,4v24a4.012,4.012,0,0,1-4,4H788a4.012,4.012,0,0,1-4-4V499h6Zm14,18a10,10,0,1,0-10-10A10,10,0,0,0,804,517Zm-6.4-10a6.4,6.4,0,1,0,6.4-6.4A6.393,6.393,0,0,0,797.6,507Z"
+                transform="translate(-778 -481)"
+              />
+            </svg>
+            <p>pridať fotky</p>
+          </div>
         </div>
       </div>
 

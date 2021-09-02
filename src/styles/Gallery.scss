@@ -5,20 +5,30 @@
 }
 
 .addPhotos {
-  height: 230px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 60%;
   background-color: white;
   color: $lightText;
   border: 3px solid $border;
   border-radius: 4px;
   transition: 0.3s transform;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     transform: translateY(-8px);
+  }
+
+  &__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
   }
 
   svg {

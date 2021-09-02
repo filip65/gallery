@@ -1,16 +1,22 @@
 .photoCard {
-  height: 230px;
+  // height: 230px;
+  padding-top: 60%;
   width: 100%;
   border-radius: 4px;
   overflow: hidden;
+  position: relative;
+  background-color: rgb(212, 212, 212);
 
   transition: 0.3s transform;
   cursor: pointer;
 
-  &__bg {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  &__image {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &:hover {

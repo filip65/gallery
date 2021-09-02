@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/PhotoCard.scss";
-import { BackgroundImage } from "react-image-and-background-image-fade";
+import LazyLoad from "react-lazyload";
 
 function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
   const [imageUrl, setImageUrl] = useState("");
@@ -21,14 +21,14 @@ function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
 
   return (
     <div className="photoCard">
-      <BackgroundImage
-        height="100%"
-        width="100%"
-        className="photoCard__bg"
-        src={imageUrl}
-        lazyLoad
-        onClick={() => handlePhotoCardClick(index)}
-      ></BackgroundImage>
+      <LazyLoad offset={200}>
+        <img
+          src={imageUrl}
+          alt=""
+          className="photoCard__image"
+          onClick={() => handlePhotoCardClick(index)}
+        />
+      </LazyLoad>
     </div>
   );
 }
