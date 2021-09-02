@@ -19,28 +19,31 @@ function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
   });
 
   const sendPhotos = async () => {
-    setSendBtnText("fotky sa odosielajú");
-    files.forEach((file) => {
-      const formData = new FormData();
-      formData.append("image", file);
-      fetch(`${environment.apiUrl}/gallery/${path}`, {
-        method: "POST",
-        body: formData,
-      }).then((res) => {
-        numberOfSendPhotos++;
+    // musi byt aspon jedna fotka nahrata
+    if (files.length > 0) {
+      setSendBtnText("fotky sa odosielajú");
+      files.forEach((file) => {
+        const formData = new FormData();
+        formData.append("image", file);
+        fetch(`${environment.apiUrl}/gallery/${path}`, {
+          method: "POST",
+          body: formData,
+        }).then((res) => {
+          numberOfSendPhotos++;
 
-        //ak sa uz vsetky fotky nahrali
-        if (numberOfSendPhotos === files.length) {
-          getGalleryInfo();
-          setSendBtnText("Fotky úspešne odoslane");
-          sendBtn.current.classList.add("done");
+          //ak sa uz vsetky fotky nahrali
+          if (numberOfSendPhotos === files.length) {
+            getGalleryInfo();
+            setSendBtnText("Fotky úspešne odoslane");
+            sendBtn.current.classList.add("done");
 
-          setTimeout(() => {
-            setIsAddPhotosModalOpen(false);
-          }, 1500);
-        }
+            setTimeout(() => {
+              setIsAddPhotosModalOpen(false);
+            }, 1500);
+          }
+        });
       });
-    });
+    }
   };
 
   return (
