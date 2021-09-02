@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Card.scss";
-
 import LazyLoad from "react-lazyload";
 
 function Card({ image, name, path, setHeaderBgImagePath }) {

@@ -1,6 +1,5 @@
 import { useRef, useState, useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-
 import "./App.scss";
 import Home from "./pages/Home";
 import Subtitle from "./components/Subtitle";
