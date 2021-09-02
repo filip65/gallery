@@ -1,8 +1,11 @@
 export const environment = {
-    apiUrl = 'http://api.programator.sk',
+  apiUrl: "http://api.programator.sk",
 
-    getImages = async (path) => {
-        fetch(`${apiUrl}/gallery`).then(res => res.json()).then()
-    }
+  // getImages = async (path) => {
+  //     const data = fetch(`${apiUrl}/gallery`)
+  //     .then(res => res.json())
+  //     .then(data => data.galleries)
 
-}
+  //     return data;
+  // }
+};

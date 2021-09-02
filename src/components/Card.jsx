@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Card.scss";
 import LazyLoad from "react-lazyload";
+import { environment } from "../environment";
 
 function Card({ image, name, path, setHeaderBgImagePath }) {
   const [imageURL, setImageURL] = useState("");
@@ -26,7 +27,7 @@ function Card({ image, name, path, setHeaderBgImagePath }) {
 
   // zobrazenie postu fotiak v galerii
   useEffect(() => {
-    fetch(`http://api.programator.sk/gallery/${path}`)
+    fetch(`${environment.apiUrl}/gallery/${path}`)
       .then((res) => res.json())
       .then((data) => {
         const amount = data.images.length;

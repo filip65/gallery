@@ -3,6 +3,7 @@ import AddGalleryModal from "../components/AddGalleryModal";
 import Card from "../components/Card";
 import Modal from "../components/Modal";
 import addIcon from "../images/add_icon_circle.svg";
+import { environment } from "../environment";
 import "../styles/Home.scss";
 
 function Home({ headerBgImagePath, setHeaderBgImagePath }) {
@@ -10,7 +11,7 @@ function Home({ headerBgImagePath, setHeaderBgImagePath }) {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    fetch("http://api.programator.sk/gallery")
+    fetch(`${environment.apiUrl}/gallery`)
       .then((res) => {
         return res.json();
       })

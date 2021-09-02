@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { environment } from "../environment";
 import "../styles/PhotoCarousel.scss";
 import DeleteBtn from "./DeleteBtn";
 
@@ -38,7 +39,7 @@ function PhotoCarousel({
   };
 
   const deleteImage = async () => {
-    fetch(`http://api.programator.sk/gallery/${images[index].fullpath}`, {
+    fetch(`${environment.apiUrl}/gallery/${images[index].fullpath}`, {
       method: "delete",
     }).then(() => {
       setIsCarouseOpen(false);

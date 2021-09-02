@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDropzone } from "react-dropzone";
+import { environment } from "../environment";
 import "../styles/AddPhotosModal.scss";
 
 function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
@@ -22,7 +23,7 @@ function AddPhotosModal({ path, getGalleryInfo, setIsAddPhotosModalOpen }) {
     files.forEach((file) => {
       const formData = new FormData();
       formData.append("image", file);
-      fetch(`http://api.programator.sk/gallery/${path}`, {
+      fetch(`${environment.apiUrl}/gallery/${path}`, {
         method: "POST",
         body: formData,
       }).then((res) => {

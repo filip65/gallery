@@ -8,6 +8,8 @@ import "../styles/Gallery.scss";
 import AddPhotosModal from "../components/AddPhotosModal";
 import DeleteBtn from "../components/DeleteBtn";
 
+import { environment } from "../environment";
+
 function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
   const { path } = useParams();
   const history = useHistory();
@@ -17,7 +19,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
   const [photoIndex, setPhotoIndex] = useState(0);
 
   const getGalleryInfo = useCallback(async () => {
-    fetch(`http://api.programator.sk/gallery/${path}`)
+    fetch(`${environment.apiUrl}/gallery/${path}`)
       .then((res) => {
         return res.json();
       })
@@ -43,7 +45,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
   };
 
   const deleteGallery = async () => {
-    fetch(`http://api.programator.sk/gallery/${path}`, {
+    fetch(`${environment.apiUrl}/gallery/${path}`, {
       method: "delete",
     }).then(() => {
       setSubtitleText("kategérie");
