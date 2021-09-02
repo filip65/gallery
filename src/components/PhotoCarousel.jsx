@@ -14,7 +14,7 @@ function PhotoCarousel({
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    getImageUrl(images[index]).then((url) => setImageUrl(url));
+    getImageUrl(images[index], 700).then((url) => setImageUrl(url));
   }, [index, images]);
 
   const nextImage = useCallback(() => {
@@ -35,7 +35,7 @@ function PhotoCarousel({
 
   const arrowPressed = useCallback(
     (e) => {
-      if (e.code === "ArroeLeft") {
+      if (e.code === "ArrowLeft") {
         prevImage();
       }
 
