@@ -14,18 +14,17 @@
     width: 2rem;
     height: 2rem;
     top: 50%;
-    transition: 0.2s fill;
     cursor: pointer;
     background: transparent;
     border: none;
 
     svg {
       object-fit: contain;
-      fill: white;
+      fill: rgba(255, 255, 255, 0.575);
     }
 
     &:hover > svg {
-      fill: rgba(255, 255, 255, 0.575);
+      fill: white;
     }
   }
 

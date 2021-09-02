@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "../styles/AddGalleryModal.scss";
+import { environment } from "../environment";
 
 const schema = yup.object().shape({
   name: yup.string().required("Meno nesmie byť prázdne!"),
@@ -25,9 +26,8 @@ function AddGalleryModal({ setIsAddGalleryModalOpen, getCategories }) {
   };
 
   const onSubmit = (data) => {
-    //   odstranenie medzery pred a za slovom
     data.name = data.name.trim();
-    // kontrola pritomnosti / v slove
+
     if (data.name.includes("/")) {
       setError("name", {
         type: "manual",
@@ -36,7 +36,7 @@ function AddGalleryModal({ setIsAddGalleryModalOpen, getCategories }) {
       return;
     }
 
-    fetch("http://api.programator.sk/gallery", {
+    fetch(`${environment.apiUrl}/gallery`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

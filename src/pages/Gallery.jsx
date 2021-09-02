@@ -3,21 +3,24 @@ import { useParams, useHistory } from "react-router-dom";
 import PhotoCard from "../components/PhotoCard";
 import PhotoCarousel from "../components/PhotoCarousel";
 import Modal from "../components/Modal";
-
 import "../styles/Gallery.scss";
 import AddPhotosModal from "../components/AddPhotosModal";
 import DeleteBtn from "../components/DeleteBtn";
+import { environment } from "../environment";
+import { useGetHeaderBg } from "../headerContext";
+import getImageUrl from "../utils/getImageUrl";
 
-function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
+function Gallery({ setSubtitleText }) {
   const { path } = useParams();
   const history = useHistory();
   const [gallery, setGallery] = useState({});
   const [isCarouselOpen, setIsCarouseOpen] = useState(false);
   const [isAddPhotosModalOpen, setIsAddPhotosModalOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const { changeHeaderBg } = useGetHeaderBg();
 
   const getGalleryInfo = useCallback(async () => {
-    fetch(`http://api.programator.sk/gallery/${path}`)
+    fetch(`${environment.apiUrl}/gallery/${path}`)
       .then((res) => {
         return res.json();
       })
@@ -25,14 +28,12 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
         setGallery(data);
         setSubtitleText(data.gallery.name);
         if (data.images.length > 0) {
-          setHeaderBgImagePath(data.images[0].fullpath);
-        } else {
-          // default obrazok ak galeria nema zatial ziaden obrazok
-          headerBg.current.style.backgroundImage =
-            "url(https://images.pexels.com/photos/1674049/pexels-photo-1674049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)";
+          getImageUrl(data.images[0]).then((url) => {
+            changeHeaderBg(url);
+          });
         }
       });
-  }, [path, setHeaderBgImagePath, headerBg, setSubtitleText]);
+  }, [path, setSubtitleText, changeHeaderBg]);
 
   useEffect(() => {
     getGalleryInfo();
@@ -44,7 +45,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
   };
 
   const deleteGallery = async () => {
-    fetch(`http://api.programator.sk/gallery/${path}`, {
+    fetch(`${environment.apiUrl}/gallery/${path}`, {
       method: "delete",
     }).then(() => {
       setSubtitleText("kategérie");
@@ -60,7 +61,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
             return (
               <PhotoCard
                 key={image.path}
-                fullpath={image.fullpath}
+                image={image}
                 index={index}
                 handlePhotoCardClick={handlePhotoCardClick}
               />

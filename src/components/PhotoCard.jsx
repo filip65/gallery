@@ -2,22 +2,16 @@ import React, { useEffect, useState } from "react";
 import "../styles/PhotoCard.scss";
 import LazyLoad from "react-lazyload";
 
-function PhotoCard({ fullpath, index, handlePhotoCardClick }) {
+import getImageUrl from "../utils/getImageUrl";
+
+function PhotoCard({ image, index, handlePhotoCardClick }) {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    fetch(`http://api.programator.sk/images/300x0/${fullpath}`)
-      .then((res) => {
-        if (res.ok) {
-          setImageUrl(res.url);
-        } else {
-          throw Error("nepodarilo sa nacitat obrazok");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [fullpath]);
+    getImageUrl(image).then((url) => {
+      setImageUrl(url);
+    });
+  }, [image]);
 
   return (
     <div className="photoCard">
