@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { environment } from "../environment";
 import "../styles/PhotoCarousel.scss";
 import DeleteBtn from "./DeleteBtn";
@@ -17,21 +17,41 @@ function PhotoCarousel({
     getImageUrl(images[index]).then((url) => setImageUrl(url));
   }, [index, images]);
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     if (index === images.length - 1) {
       setIndex(0);
     } else {
       setIndex((oldIndex) => oldIndex + 1);
     }
-  };
+  }, [images.length, index, setIndex]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     if (index === 0) {
       setIndex(images.length - 1);
     } else {
       setIndex((oldIndex) => oldIndex - 1);
     }
-  };
+  }, [images.length, index, setIndex]);
+
+  const arrowPressed = useCallback(
+    (e) => {
+      if (e.code === "ArroeLeft") {
+        prevImage();
+      }
+
+      if (e.code === "ArrowRight") {
+        nextImage();
+      }
+    },
+    [nextImage, prevImage]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", arrowPressed);
+    return () => {
+      document.removeEventListener("keydown", arrowPressed);
+    };
+  }, [arrowPressed]);
 
   const deleteImage = async () => {
     fetch(`${environment.apiUrl}/gallery/${images[index].fullpath}`, {
