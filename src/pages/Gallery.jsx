@@ -28,8 +28,7 @@ function Gallery({ setSubtitleText, setHeaderBgImagePath, headerBg }) {
           setHeaderBgImagePath(data.images[0].fullpath);
         } else {
           // default obrazok ak galeria nema zatial ziaden obrazok
-          headerBg.current.style.backgroundImage =
-            "url(https://images.pexels.com/photos/1674049/pexels-photo-1674049.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)";
+          headerBg.current.style.background = "#797979";
         }
       });
   }, [path, setHeaderBgImagePath, headerBg, setSubtitleText]);

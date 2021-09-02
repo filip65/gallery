@@ -16,10 +16,10 @@ function App() {
         fetch(
           `http://api.programator.sk/images/300x0/${headerBgImagePath}`
         ).then((res) => {
-          headerBg.current.style.backgroundImage = `url(${res.url})`;
+          headerBg.current.style.background = `url(${res.url})`;
         });
       } else {
-        headerBg.current.style.backgroundImage = `url("https://upload.wikimedia.org/wikipedia/commons/b/b1/Missing-image-232x150.png")`;
+        headerBg.current.style.background = "#696969";
       }
     };
     changeHeaderBgImage();
